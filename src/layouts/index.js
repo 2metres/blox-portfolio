@@ -1,66 +1,22 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import { Container } from 'react-responsive-grid'
-
-import { rhythm, scale } from '../utils/typography'
 
 class Template extends React.Component {
   render() {
     const { location, children } = this.props
-    let header
-    if (location.pathname === '/') {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            Gatsby Starter Blog
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: 'Montserrat, sans-serif',
-            marginTop: 0,
-            marginBottom: rhythm(-1),
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            Gatsby Starter Blog
-          </Link>
-        </h3>
-      )
-    }
+
     return (
-      <Container
-        style={{
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        {header}
-        {children()}
-      </Container>
+      <main>
+      <header>
+        <div className="Container">
+          <h1>Andrew<br/>Carr</h1>
+          <h2>Designer/Developer and All-around friendly giant</h2>
+          <p>I design, prototype, create, test and deliver digital products for a wide range of clients. Using my strong UI and UX skills I collaborate closely with developers to build engaging products. I am naturally curious, love tackling hard problems and am always looking for opportunities to learn and develop skills in all areas of product development.</p>
+        </div>
+      </header>
+      <div>
+        { children() }
+      </div>
+      </main>
     )
   }
 }

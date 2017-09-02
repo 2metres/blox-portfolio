@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.Container {
+  max-width: 54em;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+.Post {
+  padding: 2em 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 8vw;
+  line-height: 0.925;
+}
+
+h2 {
+
+}

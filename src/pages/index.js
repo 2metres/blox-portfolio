@@ -1,10 +1,9 @@
 import React from "react"
 import Link from "gatsby-link"
-import get from "lodash/get"
+import { get } from "lodash"
 import Helmet from "react-helmet"
 
-import Bio from "../components/Bio"
-import { rhythm } from "../utils/typography"
+import '../css/index.css'
 
 class BlogIndex extends React.Component {
   render() {
@@ -14,33 +13,27 @@ class BlogIndex extends React.Component {
     return (
       <div>
         <Helmet title={get(this, "props.data.site.siteMetadata.title")} />
-        <Bio />
-        {posts.map(post => {
+        { posts.map(post => {
           if (post.node.path !== "/404/") {
             const title = get(post, "node.frontmatter.title") || post.node.path
+
             return (
-              <div>
-                <h3
-                  key={post.node.frontmatter.path}
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link
-                    style={{ boxShadow: "none" }}
-                    to={post.node.frontmatter.path}
-                  >
-                    {post.node.frontmatter.title}
-                  </Link>
-                </h3>
-                <small>
-                  {post.node.frontmatter.date}
-                </small>
-                <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
-              </div>
+              <article
+                className="Post"
+                style={{
+                  background: post.node.frontmatter.backgroundColor,
+                  color: post.node.frontmatter.color,
+                }}
+              >
+                <div className="Container">
+                  <h3 key={ post.node.frontmatter.title }>{ post.node.frontmatter.title }</h3>
+                  <h4 key={ post.node.frontmatter.subtitle }>{ post.node.frontmatter.subtitle }</h4>
+                  <div dangerouslySetInnerHTML={ { __html: post.node.html } } />
+                </div>
+              </article>
             )
           }
-        })}
+        }) }
       </div>
     )
   }
@@ -59,16 +52,15 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark {
       edges {
         node {
-          excerpt
-          frontmatter {
-            path
-            date(formatString: "DD MMMM, YYYY")
-          }
+          html
           frontmatter {
             title
+            subtitle
+            backgroundColor
+            color
           }
         }
       }

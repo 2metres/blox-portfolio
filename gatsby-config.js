@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Starter Blog",
-    author: "Kyle Mathews",
+    title: "Andrew Carr – Designer/Developer and All-around friendly giant",
+    author: "Andrew Carr",
   },
   plugins: [
     {
@@ -42,12 +42,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: "gatsby-plugin-typography",
-      options: {
-        pathToConfigModule: "src/utils/typography",
-      },
-    },
+    `gatsby-plugin-react-helmet`
   ],
 }
